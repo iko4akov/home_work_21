@@ -4,21 +4,25 @@ class Shop(Store):
     def __init__(self, items: dict, capacity=20):
         super().__init__(items, capacity)
 
-    def add(self, name: str, count: int):
-        new_count = self.capacity - self.get_free_space + count
-        if new_count <= self.capacity and name in items:
-            self.items[name] += count
-        elif new_count <= self.capacity and name not in items and self.get_unique_items_count <= 4:
-            self.items[name] = count
-        else:
-            return print(f"В магазине нет столько места, осталось мест: {self.get_free_space},"
-                         f"\nесли эта цифра ---> {self.get_unique_items_count} == 5,\n"
-                         f"то количество уникальных товаров не может быть больше 5")
+
+    def add(self, product: str, count: int):
+
+        if count <= self.get_free_space and product in self.items:
+            self.items[product] += count
+            return True
+        elif count <= self.get_free_space and product not in self.items and self.get_unique_items_count <= 4:
+            self.items[product] = count
+            return True
+        # else:
+        #     return print(f"В магазине нет столько места, осталось мест: {self.get_free_space},"
+        #                  f"\nесли эта цифра ---> {self.get_unique_items_count} == 5,\n"
+        #                  f"то количество уникальных товаров не может быть больше 5")
 
     def remove(self, name: str, count: int):
-        new_count = self.capacity - self.get_free_space - count
-        if new_count >= 0:
-            self.items[name] -= count
+        if name in self.items:
+            new_count = self.capacity - self.get_free_space - count
+            if new_count >= 0:
+                self.items[name] -= count
         else:
             return print(f"В магазине нет столько товара, осталось товара: {self.capacity-self.get_free_space}")
 

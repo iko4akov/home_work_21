@@ -16,20 +16,21 @@ class Store(ABC):
 
 
     def remove(self, product: str, count: int):
-        new_count = self.capacity - self.get_free_space - count
+        new_count = self.items[product] - count
         if new_count >= 0:
             self.items[product] -= count
-            return self.items[product]
-        else:
-            return print(f"На складе нет столько товара, осталось товара: {self.capacity - self.get_free_space}")
+            return True
+            # return print(f"На складе нет столько товара, осталось товара: {self.capacity - self.get_free_space}")
 
 
     @property
     def get_free_space(self) -> int:
-        return self.capacity - sum(quantity for quantity in self.items.values())
+        " Возвращает количество свобоных мест"
+        return self.capacity - sum(quantity for quantity in self.get_items().values())
 
 
     def get_items(self) -> dict:
+        """Возвращиет items"""
         # return "\n".join([f"{item}: {self.items[item]}" for item in self.items])
         return self.items
 
