@@ -1,6 +1,6 @@
 from shop import Shop
 from storage import Storage
-from  request import Request
+from request import Request
 
 items = {
     "собачки": 23,
@@ -16,6 +16,8 @@ items_shop = {
     "собачки": 5
 
 }
+
+
 class Utils:
 
     def __init__(self, items: dict, items_shop: dict):
@@ -34,6 +36,7 @@ class Utils:
         # Создание обьекта запроса
         request = Request(self.text, self.items)
         return request
+
     @property
     def get_req_data(self) -> dict:
         # создание запроса в виде словаря

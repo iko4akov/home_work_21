@@ -1,9 +1,5 @@
-from request import Request
-from storage import Storage
-from store import Store
-from shop import Shop
-from utils import Utils, items, items_shop
 
+from utils import Utils, items, items_shop
 
 
 def go():
@@ -31,8 +27,5 @@ def go():
     else:
         return print('Не хватает на складе, попробуйте заказать меньше')
 
-    print( "В склад хранится:\n"+"\n".join(f"{item}" for item in items.items()))
-    print( "В магазине хранится:\n"+"\n".join(f"{item}" for item in items_shop.items()))
-
-
-go()
+    print("В склад хранится:\n" + "\n".join(f"{item[0]}: {item[1]}" for item in items.items()))
+    print("В магазине хранится:\n" + "\n".join(f"{item[0]}: {item[1]}" for item in items_shop.items()))
