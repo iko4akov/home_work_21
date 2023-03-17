@@ -6,14 +6,15 @@ class Storage(Store):
         super().__init__(items, capacity)
 
 
-items = {
-    "apple": 1,
-    "cherry": 1,
-    "fruit": 1,
-    "oil": 1
-}
+# items = {
+#     "apple": 1,
+#     "cherry": 1,
+#     "fruit": 1,
+#     "oil": 1,
+#     "печеньки": 5
+# }
 #
-# stoage = Storage(items)
+# storage = Storage(items)
 #
 # stoage.add("apple", 1)
 # stoage.remove("oil", 1)

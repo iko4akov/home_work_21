@@ -1,42 +1,48 @@
-from store import Store
+import store
 from storage import Storage
 from shop import Shop
+from store import Store
 
-text = "Доставить 3 печеньки из склад в магазин"
 
 class Request:
-    all_cls = [Storage, Shop, Store]
-    def __init__(self, text):
+
+    def __init__(self, text: str, items: dict):
+        self.all_cls = [Storage, Shop, Store]
+        self.items = items
         self.text = text.split()
-        self.f = self.text[4]
-        self.amount = self.text[1]
-        self.to = self.text[6]
-        self.product = self.text[3]
-
-    def get_req(self):
-        req = {}
-        req["from"] = self.f
-        req["amount"] = self.amount
-        req["to"] = self.to
-        req["product"] = self.product
-        return req
+        self.data = self.parser_request()
 
 
+    def parser_request(self):
+        req_data = {}
+        for i in range(len(self.text)):
 
-    # def get_request(self):
-    #     req = {}
-    #     a = self.text.split()
-    #     req["f"]=a[4]
-    #     req["amount"]=a[1]
-    #     req["to"] = a[6]
-    #     req["product"] = a[3]
-    #
-    #     return req
+            if self.text[i] == "со" or self.text[i] == "из":
+                req_data["from"] = self.text[i+1]
 
-req = Request(text)
+            if self.text[i] == "в":
+                req_data['to'] = self.text[i+1]
 
-print(req.get_req())
+            if self.text[i] in self.items.keys():
+                req_data['product'] = self.text[i]
+
+            if self.text[i].isdigit():
+                req_data['amount'] = int(self.text[i])
 
 
+        if "to" not in req_data:
+            if req_data["from"].startswith("скла"):
+                req_data['to'] = "магазин"
 
+            if req_data["from"].startswith("магаз"):
+                req_data['to'] = "склад"
+
+        if "from" not in req_data:
+            if req_data["to"].startswith("скла"):
+                req_data['from'] = "магазин"
+
+            if req_data["to"].startswith("магаз"):
+                req_data['from'] = "склад"
+
+        return req_data
 

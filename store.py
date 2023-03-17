@@ -15,10 +15,11 @@ class Store(ABC):
             return print(F"На складе нет столько места, осталось мест: {self.get_free_space}")
 
 
-    def remove(self, name: str, count: int):
+    def remove(self, product: str, count: int):
         new_count = self.capacity - self.get_free_space - count
         if new_count >= 0:
-            self.items[name] -= count
+            self.items[product] -= count
+            return self.items[product]
         else:
             return print(f"На складе нет столько товара, осталось товара: {self.capacity - self.get_free_space}")
 
@@ -28,18 +29,23 @@ class Store(ABC):
         return self.capacity - sum(quantity for quantity in self.items.values())
 
 
-    @property
-    def get_items(self) -> str:
-        return "\n".join([f"{item}: {self.items[item]}" for item in self.items])
-
+    def get_items(self) -> dict:
+        # return "\n".join([f"{item}: {self.items[item]}" for item in self.items])
+        return self.items
 
     @property
     def get_unique_items_count(self) -> int:
         return len(self.items)
 
-
-
-
-
+# items = {
+#     "собачки": 1,
+#     "cherry": 1,
+#     "коробки": 1,
+#     "oil": 1,
+#     "печеньки": 5
+# }
+#
+#
+# store = Store(items, 100)
 
 

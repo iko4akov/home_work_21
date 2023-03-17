@@ -24,21 +24,21 @@ class Shop(Store):
 
 
 
-items = {
-    "apple": 1,
-    "cherry": 1,
-    "fruit": 1,
-    "oil": 1
-}
+# items = {
+#     "apple": 1,
+#     "cherry": 1,
+#     "fruit": 1,
+#     "oil": 1
+# }
 
-shop = Shop(items)
-
-shop.add("apple", 1)
-shop.add("tiers", 1)
-
-
-shop.remove("oil", 1)
+# shop = Shop(items)
+#
+# shop.add("apple", 1)
+# shop.add("tiers", 1)
+#
+#
+# shop.remove("oil", 1)
 
 # print(shop.get_free_space)
-print(shop.get_items)
+# print(shop.get_items)
 # print(shop.get_unique_items_count)
