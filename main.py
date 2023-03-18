@@ -27,7 +27,7 @@ def go():
     else:
         return print('Не хватает на складе, попробуйте заказать меньше')
 
-    print("В склад хранится:\n" + "\n".join(f"{item[0]}: {item[1]}" for item in items.items()))
+    print("На складе хранится:\n" + "\n".join(f"{item[0]}: {item[1]}" for item in items.items()))
     print("В магазине хранится:\n" + "\n".join(f"{item[0]}: {item[1]}" for item in items_shop.items()))
 
 if __name__ == '__main__':

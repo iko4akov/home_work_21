@@ -1,7 +1,7 @@
-from store import Store
+from storage import Storage
 
 
-class Shop(Store):
+class Shop(Storage):
     def __init__(self, items: dict, capacity=20):
         super().__init__(items, capacity)
 
