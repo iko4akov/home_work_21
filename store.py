@@ -1,7 +1,5 @@
-from abc import ABC
 
-
-class Store(ABC):
+class Store():
     def __init__(self, items: dict, capacity: int):
         self.items = items
         self.capacity = capacity
@@ -10,8 +8,7 @@ class Store(ABC):
         new_count = self.capacity - self.get_free_space + count
         if new_count <= self.capacity:
             self.items[name] += count
-        else:
-            return print(F"На складе нет столько места, осталось мест: {self.get_free_space}")
+
 
     def remove(self, product: str, count: int):
         new_count = self.items[product] - count

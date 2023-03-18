@@ -27,7 +27,7 @@ class Utils:
 
     @property
     def get_text(self) -> str:
-        # Ввод команды
+        """Ввод команды от пользователя"""
         text = input("введите предложение: ")
         return text
 

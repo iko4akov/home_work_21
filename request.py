@@ -4,7 +4,7 @@ from store import Store
 
 
 class Request:
-
+    all_location = [Storage, Shop]
     def __init__(self, text: str, items: dict):
         self.all_cls = [Storage, Shop, Store]
         self.items = items
