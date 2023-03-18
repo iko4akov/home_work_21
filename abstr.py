@@ -8,11 +8,13 @@ class AbcStore(ABC):
     @property
     @abstractmethod
     def add(self, name: str, count: int):
+        """ Увеличивает количесто в items товара product на количесто count"""
         pass
 
     @property
     @abstractmethod
     def remove(self, product: str, count: int):
+        """ Уменьшает количесто в items товара product на количесто count"""
         pass
 
     @property
@@ -30,4 +32,5 @@ class AbcStore(ABC):
     @property
     @abstractmethod
     def get_unique_items_count(self) -> int:
+        "Возвращает количество уникальных товаров"
         pass

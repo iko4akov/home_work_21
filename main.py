@@ -4,7 +4,6 @@ from utils import Utils, items, items_shop
 
 def go():
     utilite = Utils(items, items_shop)
-
     # создание запроса в виде словаря
     req_data = utilite.get_req_data
     # получение имени продукта и количества
