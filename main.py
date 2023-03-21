@@ -1,33 +1,35 @@
-
-from utils import Utils, items, items_shop
+from request import Request
 
 
 def go():
-    utilite = Utils(items, items_shop)
+    text = input("введите предложение: ")
+    req = Request(text)
     # создание запроса в виде словаря
-    req_data = utilite.get_req_data
-    # получение имени продукта и количества
-    product = req_data["product"]
-    amount = req_data.get('amount')
-    # создание объктов откуда и куда
-    from_obj = utilite.get_from(req_data)
+    req_dict = req.get_req_data()
 
-    to_obj = utilite.get_to(req_data)
+    # получение имени продукта и количества
+    product = req_dict["product"]
+    amount = req_dict['amount']
+    # создание объектов откуда и куда
+    from_obj = req.from_obj()
+    to_obj = req.to_obj()
 
     if from_obj.remove(product, amount):
         if to_obj.add(product, amount):
-            print(f"Нужное количество есть на {req_data['from']}")
-            print(f"Курьер забрал {amount} {product} со {req_data['from']}a")
-            print(f"Курьер везет {amount} {product} со {req_data.get('from')}а в {req_data.get('to')}")
-            print(f"Курьер доставил {amount} {product} в {req_data.get('to')}")
+            print(f"Нужное количество есть на {req_dict['from']}")
+            print(f"Курьер забрал {amount} {product} со {req_dict['from']}a")
+            print(f"Курьер везет {amount} {product} со {req_dict.get('from')}а в {req_dict.get('to')}")
+            print(f"Курьер доставил {amount} {product} в {req_dict.get('to')}")
 
         else:
             return print("В магазин недостаточно места, попобуйте что то другое")
     else:
         return print('Не хватает на складе, попробуйте заказать меньше')
 
-    print("На складе хранится:\n" + "\n".join(f"{item[0]}: {item[1]}" for item in items.items()))
-    print("В магазине хранится:\n" + "\n".join(f"{item[0]}: {item[1]}" for item in items_shop.items()))
+    print("На складе хранится:\n" + "\n".join(f"{item[0]}: {item[1]}" for item in from_obj.items.items()))
+    print("В магазине хранится:\n" + "\n".join(f"{item[0]}: {item[1]}" for item in to_obj.items.items()))
 
 if __name__ == '__main__':
     go()
+
+#   из склад в магазин 1 собачки

@@ -25,12 +25,12 @@ class AbcStore(ABC):
 
     @property
     @abstractmethod
-    def get_items(self) -> dict:
+    def _get_items(self) -> dict:
         """Возвращиет items"""
         pass
 
     @property
     @abstractmethod
-    def get_unique_items_count(self) -> int:
+    def _get_unique_items_count(self) -> int:
         "Возвращает количество уникальных товаров"
         pass
