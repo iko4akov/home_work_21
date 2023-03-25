@@ -1,11 +1,14 @@
 from abstr import AbcStore
-import utils
+
+
 
 class Storage(AbcStore):
     name = "склад"
-    items = utils.items_storage
+
+
     def __init__(self, items: dict, capacity=100):
         super().__init__(items, capacity)
+
 
 
     def add(self, name: str, count: int):
@@ -14,10 +17,10 @@ class Storage(AbcStore):
             self.items[name] += count
 
 
-    def remove(self, product: str, count: int):
-        new_count = self.items[product] - count
+    def remove(self, product: str, amount: int):
+        new_count = self.items[product] - amount
         if new_count >= 0:
-            self.items[product] -= count
+            self.items[product] -= amount
             return True
 
     @property
@@ -25,11 +28,13 @@ class Storage(AbcStore):
         " Возвращает количество свобоных мест"
         return self.capacity - sum(quantity for quantity in self._get_items().values())
 
+
     def _get_items(self) -> dict:
         """Возвращиет items"""
         return self.items
 
     @property
     def _get_unique_items_count(self) -> int:
+        """Возвращает количество уникальных товаров"""
         return len(self.items)
 

@@ -1,6 +1,5 @@
 from request import Request
 
-
 def go():
     text = input("введите предложение: ")
     req = Request(text)
@@ -10,11 +9,15 @@ def go():
     # получение имени продукта и количества
     product = req_dict["product"]
     amount = req_dict['amount']
-    # создание объектов откуда и куда
-    from_obj = req.from_obj()
-    to_obj = req.to_obj()
+    from_data = req.get_items(req_dict['from'])
+    print(from_data['items'])
+    to_data = req.get_items(req_dict['to'])
+    print(to_data['items'])
 
-    if from_obj.remove(product, amount):
+    from_obj = from_data['class']
+    to_obj = to_data['class']
+
+    if from_obj.remove(product=product, amount=amount):
         if to_obj.add(product, amount):
             print(f"Нужное количество есть на {req_dict['from']}")
             print(f"Курьер забрал {amount} {product} со {req_dict['from']}a")
@@ -31,5 +34,3 @@ def go():
 
 if __name__ == '__main__':
     go()
-
-#   из склад в магазин 1 собачки

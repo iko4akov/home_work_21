@@ -1,13 +1,12 @@
 from storage import Storage
-import utils
+
 
 class Shop(Storage):
     name = "магазин"
-    items = utils.items_shop
+
 
     def __init__(self, items: dict, capacity=20):
         super().__init__(items, capacity)
-
 
 
     def add(self, product: str, count: int):
