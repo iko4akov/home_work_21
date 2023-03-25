@@ -18,10 +18,9 @@ class Shop(Storage):
             self.items[product] = count
             return True
 
-    def remove(self, name: str, count: int):
-        if name in self.items:
-            new_count = self.capacity - self.get_free_space - count
+    def remove(self, product: str, amount: int):
+        if product in self.items:
+            new_count = self.capacity - self.get_free_space - amount
             if new_count >= 0:
-                self.items[name] -= count
-        else:
-            return print(f"В магазине нет столько товара, осталось товара: {self.capacity - self.get_free_space}")
+                self.items[product] -= amount
+                return True

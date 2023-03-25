@@ -1,7 +1,5 @@
 from abstr import AbcStore
 
-
-
 class Storage(AbcStore):
     name = "склад"
 
@@ -12,7 +10,7 @@ class Storage(AbcStore):
 
 
     def add(self, name: str, count: int):
-        new_count = self.capacity - self._get_free_space + count
+        new_count = self.capacity - self.get_free_space + count
         if new_count <= self.capacity:
             self.items[name] += count
 

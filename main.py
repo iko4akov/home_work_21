@@ -9,10 +9,11 @@ def go():
     # получение имени продукта и количества
     product = req_dict["product"]
     amount = req_dict['amount']
+
     from_data = req.get_items(req_dict['from'])
-    print(from_data['items'])
+
     to_data = req.get_items(req_dict['to'])
-    print(to_data['items'])
+
 
     from_obj = from_data['class']
     to_obj = to_data['class']
@@ -25,9 +26,9 @@ def go():
             print(f"Курьер доставил {amount} {product} в {req_dict.get('to')}")
 
         else:
-            return print("В магазин недостаточно места, попобуйте что то другое")
+            return print(f"В {to_data['name']} недостаточно места, попобуйте что то другое")
     else:
-        return print('Не хватает на складе, попробуйте заказать меньше')
+        return print(f' {from_data["name"]} Не  на складе, попробуйте заказать меньше')
 
     print("На складе хранится:\n" + "\n".join(f"{item[0]}: {item[1]}" for item in from_obj.items.items()))
     print("В магазине хранится:\n" + "\n".join(f"{item[0]}: {item[1]}" for item in to_obj.items.items()))
