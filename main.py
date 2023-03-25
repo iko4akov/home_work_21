@@ -24,14 +24,13 @@ def go():
             print(f"Курьер забрал {amount} {product} со {req_dict['from']}a")
             print(f"Курьер везет {amount} {product} со {req_dict.get('from')}а в {req_dict.get('to')}")
             print(f"Курьер доставил {amount} {product} в {req_dict.get('to')}")
-
         else:
-            return print(f"В {to_data['name']} недостаточно места, попобуйте что то другое")
+            return print(f"В {to_data['to']} недостаточно места, попобуйте что то другое")
     else:
-        return print(f' {from_data["name"]} Не  на складе, попробуйте заказать меньше')
+        return print(f' {from_data["name"]} нет в(на) {from_data["from"]}, попробуйте заказать меньше')
 
-    print("На складе хранится:\n" + "\n".join(f"{item[0]}: {item[1]}" for item in from_obj.items.items()))
-    print("В магазине хранится:\n" + "\n".join(f"{item[0]}: {item[1]}" for item in to_obj.items.items()))
+    print(f"На {from_data['name']}е хранится:\n" + "\n".join(f"{item[0]}: {item[1]}" for item in from_obj.items.items()))
+    print(f"В {to_data['name']}е хранится:\n" + "\n".join(f"{item[0]}: {item[1]}" for item in to_obj.items.items()))
 
 if __name__ == '__main__':
     go()
