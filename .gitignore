@@ -51,6 +51,7 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 gpt/
+lesson22/
 # Translations
 *.mo
 *.pot

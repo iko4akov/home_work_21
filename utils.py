@@ -3,24 +3,22 @@ from shop import Shop
 from store import Store
 
 items_storage = {
-    "собачки": 23,
+    "собачки": 25,
     "cherry": 1,
     "коробки": 1,
-    "oil": 1,
-    "печеньки": 5
+    "шина": 1,
 }
 
 items_shop = {
-    "oil": 1,
     "печеньки": 5,
-    "собачки": 5
+    "собачки": 5,
+    "масло": 1
 }
 
 items_store = {
     "печеньки": 1,
     "собачки": 1
 }
-
 
 all_locations = [
     {
